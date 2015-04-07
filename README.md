@@ -33,7 +33,6 @@ function onDeviceReady()
 {
     var canvas = document.getElementById("myCanvas");
     var imageData = canvas.toDataURL("image/png");
-    var base64Data = btoa(imageData);
     var imageFileName = "myImage.png";
 
 	window.canvas2ImagePlugin.saveImageDataToLibrary(
@@ -43,7 +42,7 @@ function onDeviceReady()
         function(err){
             console.log(err);
         },
-        base64Data, // the image data encoded as base64
+        imageData, // the image data encoded as base64
         imageFileName // the iamge name for storage
     );
 }
