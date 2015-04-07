@@ -2,9 +2,9 @@
 
 This plugin allows you to save the contents of an HTML canvas tag to the iOS Photo Library or Android Gallery from your app.
 
-### Forked from https://github.com/devgeeks/Canvas2ImagePlugin
+Forked from https://github.com/devgeeks/Canvas2ImagePlugin
 
-Some changes as following:
+### Some changes as following:
 
 1. The user could decide the stored image name. 
 2. The user has to extract and encode the image data from the canvas by himself.
@@ -34,6 +34,7 @@ function onDeviceReady()
     var canvas = document.getElementById("myCanvas");
     var imageData = canvas.toDataURL("image/png");
     var base64Data = btoa(imageData);
+    var imageFileName = "myImage.png";
 
 	window.canvas2ImagePlugin.saveImageDataToLibrary(
         function(msg){
