@@ -5,8 +5,8 @@ Forked from https://github.com/devgeeks/Canvas2ImagePlugin
 ### Some changes as following:
 
 1. The user could decide the stored image name. 
-2. The user has to extract and encode the image data from the canvas by himself.
-3. remove the support of windows phone 8 cause there was the related feature in WinJS. 
+2. The user has to extract the image data from the canvas by himself.
+3. The support of windows phone 8 is removed cause there was the related feature in WinJS. 
 
 ## Installation
 
