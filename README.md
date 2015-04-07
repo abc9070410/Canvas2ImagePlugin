@@ -1,12 +1,15 @@
-Canvas2ImagePlugin
-============
+# Canvas2ImagePlugin
 
-This plugin allows you to save the contents of an HTML canvas tag to the iOS Photo Library, Android Gallery or WindowsPhone 8 Photo Album from your app.
+This plugin allows you to save the contents of an HTML canvas tag to the iOS Photo Library or Android Gallery from your app.
 
-See an example project using it here: [https://github.com/devgeeks/Canvas2ImageDemo](https://github.com/devgeeks/Canvas2ImageDemo) - note: this app does not work in wp8.
+### Forked from https://github.com/devgeeks/Canvas2ImagePlugin
 
-Installation
-------------
+Some changes as following.
+1. The user could decide the stored image name. 
+2. The user has to extract and encode the image data from the canvas by himself.
+3. remove the support of windows phone 8 cause there was the related feature in WinJS. 
+
+## Installation
 
 ### For Cordova 3.0.x:
 
@@ -15,10 +18,9 @@ Installation
 
 ### NOTE: For older versions of Cordova (You will probably have to use tag 0.2.0)
 
-Usage:
-------
+## Usage:
 
-Call the `window.canvas2ImagePlugin.saveImageDataToLibrary()` method using success and error callbacks and the id attribute or the element object of the canvas to save:
+Call the `window.canvas2ImagePlugin.saveImageDataToLibrary()` method using success and error callbacks and the image data and the image name :
 
 ### Example
 ```html
@@ -28,6 +30,10 @@ Call the `window.canvas2ImagePlugin.saveImageDataToLibrary()` method using succe
 ```javascript
 function onDeviceReady()
 {
+    var canvas = document.getElementById("myCanvas");
+    var imageData = canvas.toDataURL("image/png");
+    var base64Data = btoa(imageData);
+
 	window.canvas2ImagePlugin.saveImageDataToLibrary(
         function(msg){
             console.log(msg);
@@ -35,7 +41,8 @@ function onDeviceReady()
         function(err){
             console.log(err);
         },
-        document.getElementById('myCanvas')
+        base64Data, // the image data encoded as base64
+        imageFileName // the iamge name for storage
     );
 }
 ```
